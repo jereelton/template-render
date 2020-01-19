@@ -7,7 +7,7 @@
  * Details: License GPL 3.0
  */
 
-namespace App;
+namespace App\Template;
 
 use \Rain\Tpl;
 

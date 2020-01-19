@@ -4,7 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 use \Slim\Slim;
 use \Rain\Tpl;
-use \App\TemplateRender;
+use \App\Template\TemplateRender as Render;
 
 $app = new Slim();
 
@@ -27,13 +27,13 @@ $app->get("/", function(){
 	];
 
 	$tpldirs  = [
-		"tpl_dir"   => __DIR__ . "/views/", 
-		"cache_dir" => __DIR__ . "/views-cache/"
+		"tpl_dir"   => __DIR__ . "/templates/", 
+		"cache_dir" => __DIR__ . "/templates-cache/"
 	];
 
 	$tplsequence = ["header", "main", "footer"];
 
-	$template = new TemplateRender($tplfiles, [], $tpldirs);
+	$template = new Render($tplfiles, [], $tpldirs);
 
 	$template->templatePrepare($tpldata)->templateRender($tplsequence);
 
@@ -60,13 +60,13 @@ $app->get("/:generic", function($generic){
 	];
 
 	$tpldirs  = [
-		"tpl_dir"   => __DIR__ . "/views/", 
-		"cache_dir" => __DIR__ . "/views-cache/"
+		"tpl_dir"   => __DIR__ . "/templates/", 
+		"cache_dir" => __DIR__ . "/templates-cache/"
 	];
 
 	$tplsequence = ["header", $generic];
 
-	$template = new TemplateRender($tplfiles, [], $tpldirs);
+	$template = new Render($tplfiles, [], $tpldirs);
 
 	$template->templatePrepare($tpldata)->templateRender($tplsequence);
 
@@ -91,13 +91,13 @@ $app->get("/user/login", function(){
 	];
 
 	$tpldirs  = [
-		"tpl_dir"   => __DIR__ . "/views/", 
-		"cache_dir" => __DIR__ . "/views-cache/"
+		"tpl_dir"   => __DIR__ . "/templates/", 
+		"cache_dir" => __DIR__ . "/templates-cache/"
 	];
 
 	$tplsequence = ["header", "login"];
 
-	$template = new TemplateRender($tplfiles, [], $tpldirs);
+	$template = new Render($tplfiles, [], $tpldirs);
 
 	$template->templatePrepare($tpldata)->templateRender($tplsequence);
 
@@ -124,8 +124,8 @@ $app->get("/user/recovery", function(){
 	];
 
 	$tpldirs  = [
-		"tpl_dir"   => __DIR__ . "/views/", 
-		"cache_dir" => __DIR__ . "/views-cache/"
+		"tpl_dir"   => __DIR__ . "/templates/", 
+		"cache_dir" => __DIR__ . "/templates-cache/"
 	];
 
 	$tplsequence = ["header", "recovery"];
