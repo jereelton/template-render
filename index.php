@@ -44,7 +44,7 @@ $app->get("/", function(){
 $app->get("/:generic", function($generic){
 
 	$tplfiles = [
-		"header"  => true, 
+		"header"  => false, 
 		"main"    => false, 
 		"section" => false, 
 		"article" => false, 
@@ -64,7 +64,7 @@ $app->get("/:generic", function($generic){
 		"cache_dir" => __DIR__ . "/templates-cache/"
 	];
 
-	$tplsequence = ["header", $generic];
+	$tplsequence = [$generic];
 
 	$template = new Render($tplfiles, [], $tpldirs);
 
